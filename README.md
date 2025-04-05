@@ -1,3 +1,3 @@
-# data_science
+# learning repo
 
-This repo is for upload the test that help me to learn data science
+This repo is for uploading what I am learning about data science.
