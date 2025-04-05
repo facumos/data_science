@@ -1,0 +1,45 @@
+Table tipo_publico{
+  id_tipo_publico int [primary key]
+  descript varchar(30)
+}
+
+Table tipo_establecimiento{
+  id_tipo_establecimiento int [primary key]
+  descript varchar(50)
+}
+
+Table expositores{
+  id_expositor int [primary key]
+  nombre varchar(30)
+  apellido varchar(30)
+}
+
+Table evento{
+  id_evento int [primary key]
+  titulo varchar (100) [not null]
+  id_expositor int [not null]
+  tematica varchar(200)
+  id_tipo_publico int [not null]
+}
+Ref: evento.id_expositor > expositores.id_expositor //many-to-one
+Ref: evento.id_tipo_publico > tipo_publico.id_tipo_publico //many-to-one
+
+Table establecimiento{
+  id_establecimiento int [primary key]
+  nombre_establecimiento varchar(50) [not null]
+  direccion varchar(50)
+  telefono int
+  email varchar(50)
+  id_tipo_establecimiento int [not null]
+}
+Ref: establecimiento.id_tipo_establecimiento > tipo_establecimiento.id_tipo_establecimiento //many-to-one
+
+Table registro_eventos{
+  fecha date [primary key]
+  id_evento int [primary key]
+  id_establecimiento int [primary key]
+  cant_publico int [not null]
+
+}
+Ref: registro_eventos.id_evento > evento.id_evento //many-to-one
+Ref: registro_eventos.id_establecimiento > establecimiento.id_establecimiento //many-to-one

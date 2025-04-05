@@ -1,0 +1,27 @@
+Table producto{
+  id_producto int [primary key]
+  nombre VARCHAR(50) [not null]
+  unidad_medida VARCHAR(5) [not null]
+  stock_minimo INT [not null]
+  perecedro BOOL [NOT NULL]
+}
+
+Table deposito{
+  id_deposito int [primary key]
+  nombre varchar(50) [not null]
+  ubicacion varchar(100) [not null]
+  distancia_hiper int  [not null]
+}
+
+Table lote{
+  id_lote int [primary key]
+  id_producto int 
+  id_deposito int
+  cant_unidades int [not null]
+  fecha_ingreso date [not null]
+  fecha_caducidad date
+}
+
+Ref: lote.id_producto > producto.id_producto //many-to-one
+Ref: lote.id_deposito > deposito.id_deposito //many-to-one
+

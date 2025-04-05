@@ -1,0 +1,26 @@
+Table Peliculas {
+id_pelicula integer [primary key]
+titulo varchar(100) [not null]
+anio_estreno INT [not null]
+codigo_imdb INT UNIQUE
+idioma  VARCHAR(50) [not null]
+duracion_min INT [not null]
+productora VARCHAR(100)
+}
+
+Table Directores {
+id_director INT [PRIMARY KEY]
+nombre VARCHAR(50) [NOT NULL]
+apellido VARCHAR(50) [NOT NULL]
+}
+
+TABLE Pelicula_Director {
+id_pelicula INT
+id_director INT
+}
+
+Ref: Peliculas.id_pelicula > Pelicula_Director.id_pelicula // one-to-one
+Ref: Directores.id_director > Pelicula_Director.id_director // one-to-one
+
+// Cardinalidad Peliculas con Directores: Many-to-many
+
